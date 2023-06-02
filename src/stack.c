@@ -1,6 +1,6 @@
 // Copyright 2023 <Seres67>
 
-#include "include/stack.h"
+#include <stack.h>
 
 /**
  * allocates a new stack

@@ -1,6 +1,6 @@
 // Copyright 2023 <Seres67>
 
-#include "include/queue.h"
+#include <queue.h>
 #include <stdio.h>
 
 /**

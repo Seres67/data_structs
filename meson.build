@@ -1,22 +1,29 @@
-project('my_std', 'c', version: '1.0.0')
+project('mystd', 'c', version: '1.0.0', default_options: ['warning_level=3'])
 
 project_description = 'personal standard library'
 
 project_headers = [
+    'include/mystd.h',
     'include/stack.h',
-    'include/queue.h'
+    'include/queue.h',
+    'include/linked_list.h'
 ]
 
 project_source_files = [
     'src/stack.c',
-    'src/queue.c'
+    'src/queue.c',
+    'src/linked_list.c'
 ]
 
 build_args = [
 
 ]
 
-# ===============================================================
+# ===================================================================
+
+# ======
+# Target
+# ======
 
 public_headers = include_directories('include')
 
@@ -27,9 +34,9 @@ build_args += [
 
 # Only make public interfaces visible
 if target_machine.system() == 'windows' or target_machine.system() == 'cygwin'
-  build_args += '-DMYLIB_PUBLIC="__declspec(dllexport)"'
+  build_args += '-DMYSTD_PUBLIC="__declspec(dllexport)"'
 else
-  build_args += '-DMYLIB_PUBLIC=__attribute__((visibility("default")))'
+  build_args += '-DMYSTD_PUBLIC=__attribute__((visibility("default")))'
 endif
 
 project_target = shared_library(
@@ -65,3 +72,22 @@ pkg_mod.generate(
   subdirs : meson.project_name(),
   libraries : project_target,
 )
+
+
+# ==========
+# Unit Tests
+# ==========
+
+# if not meson.is_subproject()
+#   add_languages('cpp')
+#   subdir('tests')
+#
+#   test('all_tests',
+#     executable(
+#       'run_tests',
+#       files(project_test_files),
+#       dependencies : [project_dep, test_dep],
+#       install : false
+#     )
+#   )
+# endif
