@@ -6,13 +6,17 @@ project_headers = [
     'include/mystd.h',
     'include/stack.h',
     'include/queue.h',
-    'include/linked_list.h'
+    'include/linked_list.h',
+    'include/vector.h',
+    'include/binary_tree.h'
 ]
 
 project_source_files = [
     'src/stack.c',
     'src/queue.c',
-    'src/linked_list.c'
+    'src/linked_list.c',
+    'src/vector.c',
+    'src/binary_tree.c'
 ]
 
 build_args = [
